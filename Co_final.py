@@ -131,7 +131,7 @@ errors = []
 
 def error(i, statement):
     global errors
-    errors.append("Error at line {} \n Error: {} \n".format(i, statement))
+    errors.append("Error at line {}: Error: {} ".format(i, statement))
 
 
 def pritErrors():
@@ -476,4 +476,5 @@ if(isError == 0):
             continue
         printBinary(i, t)
 else:
-    print(errors)
+    for i in errors:
+        print(i)
