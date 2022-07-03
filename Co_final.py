@@ -27,8 +27,7 @@ registerDeclaration = {
 dict_repo = {
     "add": "10000",
     "sub": "10001",
-    "mov": "10010",
-    "mov": "10011",
+    "mov": ["10010","10011"],
     "ld": "10100",
     "st": "10101",
     "mul": "10110",
@@ -433,9 +432,9 @@ def printBinary(l, n):
     if (l[0] == "mov" and l[2] not in register):
         s = str(l[2])
         s = s[1:]
-        print(dict_repo.get(l[0])+register.get(l[1]) + decimaltobinary(s))
+        print(dict_repo.get(l[0])[0]+register.get(l[1]) + decimaltobinary(s))
     elif(l[0] == "mov" and l[2] in register):
-        print(dict_repo.get(l[0])+"00000" +
+        print(dict_repo.get(l[0])[1]+"00000" +
               register.get(l[1])+register.get(l[2]))
     if (l[0] == "hlt"):
         print(dict_repo.get(l[0])+"00000000000")
