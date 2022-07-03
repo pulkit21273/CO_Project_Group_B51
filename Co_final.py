@@ -154,9 +154,11 @@ def checkEightBit(a):
         return True
 
 
+labels = {}
 isError = 0
 Nerror = 0
 x = 0
+vari = 0
 
 
 def storeFunctions():
@@ -164,6 +166,7 @@ def storeFunctions():
     global con
     global errors
     global x
+    global vari
     if isError == 0:
         for i in range(0, len(inputList)):
             if(len(inputList[i]) == 0):
@@ -184,8 +187,9 @@ def storeFunctions():
                         Nerror += 1
                     else:
                         variable[str(inputList[i][1])] = 0
-                        variable_memory[str(inputList[i][1])
-                                        ] = decimaltobinary(i+1)
+                        variable_memory[str(inputList[i][1])] = i+1
+                        # print(variable_memory[str(inputList[i][1])])
+                        vari += 1
                 if(inputList[i][0] == 'ld'):
                     if(len(inputList[i]) != 3):
                         isError = 1
@@ -383,7 +387,11 @@ def errorHandling(inputList, i, n):
                 con = 1
 
 
-def printBinary(l):
+n = int(input("Enter number of instructions: "))
+
+
+def printBinary(l, n):
+    global vari
     if (l[0] == "add"):
         registerDeclaration[l[3]] = registerDeclaration.get(
             l[2])+registerDeclaration.get(l[1])
@@ -416,7 +424,7 @@ def printBinary(l):
               register.get(l[1])+register.get(l[2]))
     if (l[0] == "ld" or l[0] == "st"):
         print(dict_repo.get(l[0])+register.get(l[1]) +
-              str(variable_memory.get(l[2])))
+              decimaltobinary(n-vari+variable_memory[str(l[2])]-1))
     if (l[0] == "je" or l[0] == "jgt" or l[0] == "jlt" or l[0] == "jmp"):
         print(dict_repo.get(l[0])+"000"+variable.get(l[1]))
     if (l[0] == "rs" or l[0] == "ls"):
@@ -432,14 +440,21 @@ def printBinary(l):
         print(dict_repo.get(l[0])+"00000000000")
 
 
-n = int(input("Enter number of instructions: "))
+t = n
 inputList = []
 totalCommmands = 0
 while(n > 0):
     temp = [i for i in input().split()]
-    inputList.append(temp)
+    if(':' in temp):
+        inputList.append(temp[1:])
+        y = temp[0].rstrip(':')
+        labels[str(y)] = decimaltobinary(n-t)
+    else:
+        inputList.append(temp)
+
     totalCommmands += 1
     n = n-1
+
 storeFunctions()
 for i in range(totalCommmands):
     if(len(inputList[i]) == 0):
@@ -459,6 +474,6 @@ if(isError == 0):
     for i in inputList:
         if(i == []):
             continue
-        printBinary(i)
+        printBinary(i, t)
 else:
     print(errors)
