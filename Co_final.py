@@ -244,7 +244,7 @@ def errorHandling(inputList, i, n):
                 Nerror += 1
                 con = 1
             if(u == 0 and (inputList[i][1] == 'Flag' or inputList[i][2] == 'Flag' or inputList[i][3] == 'Flag')):
-                error(i+1, "incoorect use of Flag")
+                error(i+1, "Incorrect use of Flag")
                 isError = 1
                 Nerror += 1
                 con = 1
@@ -270,7 +270,7 @@ def errorHandling(inputList, i, n):
                 con = 1
             if(inputList[i][1] == 'Flag' or inputList[i][2] == 'Flag'):
                 if(inputList[i][0] != 'mov'):
-                    error(i+1, "incoorect use of Flag")
+                    error(i+1, "Incorrect use of Flag")
                     isError = 1
                     Nerror += 1
                     con = 1
@@ -300,7 +300,7 @@ def errorHandling(inputList, i, n):
                     con = 1
                     Nerror += 1
                 if(inputList[i][1] == 'Flag' or inputList[i][2] == 'Flag'):
-                    error(i+1, "incoorect use of Flag")
+                    error(i+1, "Incorrect use of Flag")
                     isError = 1
                     Nerror += 1
                     con = 1
@@ -328,7 +328,7 @@ def errorHandling(inputList, i, n):
                     con = 1
                     Nerror += 1
                 if(inputList[i][1] == 'Flag' or inputList[i][2] == 'Flag'):
-                    error(i+1, "incoorect use of Flag")
+                    error(i+1, "Incorrect use of Flag")
                     isError = 1
                     Nerror += 1
                     con = 1
@@ -349,7 +349,7 @@ def errorHandling(inputList, i, n):
                 Nerror += 1
                 error(i+1, "Invalid syntax")
             if(inputList[i][1] == 'Flag' or inputList[i][2] == 'Flag'):
-                error(i+1, "incoorect use of Flag")
+                error(i+1, "Incorrect use of Flag")
                 isError = 1
                 Nerror += 1
                 con = 1
@@ -366,7 +366,7 @@ def errorHandling(inputList, i, n):
                 Nerror += 1
                 error(i+1, "Invalid syntax")
             if(inputList[i][1] == 'Flag'):
-                error(i+1, "incoorect use of Flag")
+                error(i+1, "Incorrect use of Flag")
                 isError = 1
                 Nerror += 1
                 con = 1
